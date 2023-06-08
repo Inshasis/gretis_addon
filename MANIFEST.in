@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include gretis_addon *.css
+recursive-include gretis_addon *.csv
+recursive-include gretis_addon *.html
+recursive-include gretis_addon *.ico
+recursive-include gretis_addon *.js
+recursive-include gretis_addon *.json
+recursive-include gretis_addon *.md
+recursive-include gretis_addon *.png
+recursive-include gretis_addon *.py
+recursive-include gretis_addon *.svg
+recursive-include gretis_addon *.txt
+recursive-exclude gretis_addon *.pyc
