@@ -1,0 +1,437 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-07-28 18:32:15.605522",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "column_break_baxwf",
+  "employee_name",
+  "section_break_irmp2",
+  "1",
+  "column_break_xb93t",
+  "2",
+  "column_break_cekca",
+  "3",
+  "column_break_toc3b",
+  "4",
+  "column_break_ibfzx",
+  "5",
+  "column_break_ae7jc",
+  "6",
+  "column_break_thnlq",
+  "7",
+  "column_break_qb8if",
+  "8",
+  "column_break_qsqqj",
+  "9",
+  "column_break_rkpol",
+  "10",
+  "column_break_lc7r3",
+  "11",
+  "section_break_55gp2",
+  "12",
+  "column_break_3la42",
+  "13",
+  "column_break_tbxrr",
+  "14",
+  "column_break_ilqpj",
+  "15",
+  "column_break_5k7mw",
+  "16",
+  "column_break_egvwm",
+  "17",
+  "column_break_ispqq",
+  "18",
+  "column_break_3ee9o",
+  "19",
+  "column_break_2qvt7",
+  "20",
+  "column_break_diecc",
+  "21",
+  "column_break_ji7cn",
+  "22",
+  "section_break_z8ysw",
+  "column_break_dntkv",
+  "23",
+  "column_break_kphrk",
+  "24",
+  "column_break_2gwbu",
+  "25",
+  "column_break_5cnvp",
+  "26",
+  "column_break_6quqc",
+  "27",
+  "column_break_co0gn",
+  "28",
+  "column_break_jlju6",
+  "29",
+  "column_break_bydan",
+  "30",
+  "column_break_hp7ds",
+  "31",
+  "column_break_oikwn",
+  "hrs"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_baxwf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "section_break_irmp2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "1",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "1st",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_xb93t",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "2",
+   "fieldtype": "Select",
+   "label": "2nd",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_cekca",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "3",
+   "fieldtype": "Select",
+   "label": "3rd",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_toc3b",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "4",
+   "fieldtype": "Select",
+   "label": "4th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_ibfzx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "5",
+   "fieldtype": "Select",
+   "label": "5th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_ae7jc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "6",
+   "fieldtype": "Select",
+   "label": "6th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_thnlq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "7",
+   "fieldtype": "Select",
+   "label": "7th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_qb8if",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "8",
+   "fieldtype": "Select",
+   "label": "8th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_qsqqj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "9",
+   "fieldtype": "Select",
+   "label": "9th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_rkpol",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "10",
+   "fieldtype": "Select",
+   "label": "10th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_lc7r3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "11",
+   "fieldtype": "Select",
+   "label": "11th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "section_break_55gp2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "12",
+   "fieldtype": "Select",
+   "label": "12th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_3la42",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "13",
+   "fieldtype": "Select",
+   "label": "13th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_tbxrr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "14",
+   "fieldtype": "Select",
+   "label": "14th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_ilqpj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "15",
+   "fieldtype": "Select",
+   "label": "15th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_5k7mw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "16",
+   "fieldtype": "Select",
+   "label": "16th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_egvwm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "17",
+   "fieldtype": "Select",
+   "label": "17th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_ispqq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "18",
+   "fieldtype": "Select",
+   "label": "18th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_3ee9o",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "19",
+   "fieldtype": "Select",
+   "label": "19th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_2qvt7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "20",
+   "fieldtype": "Select",
+   "label": "20th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_diecc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "21",
+   "fieldtype": "Select",
+   "label": "21st",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_ji7cn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "22",
+   "fieldtype": "Select",
+   "label": "22nd",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "section_break_z8ysw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_dntkv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "23",
+   "fieldtype": "Select",
+   "label": "23rd",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_kphrk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "24",
+   "fieldtype": "Select",
+   "label": "24th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_2gwbu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "25",
+   "fieldtype": "Select",
+   "label": "25th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_5cnvp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "26",
+   "fieldtype": "Select",
+   "label": "26th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_6quqc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "27",
+   "fieldtype": "Select",
+   "label": "27th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_co0gn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "28",
+   "fieldtype": "Select",
+   "label": "28th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_jlju6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "29",
+   "fieldtype": "Select",
+   "label": "29th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_bydan",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "30",
+   "fieldtype": "Select",
+   "label": "30th",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_hp7ds",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "31",
+   "fieldtype": "Select",
+   "label": "31st",
+   "options": "Present\nAbsent\nOT With Present"
+  },
+  {
+   "fieldname": "column_break_oikwn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hrs",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Hrs",
+   "options": "Hrs"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-08-03 21:12:27.372938",
+ "modified_by": "Administrator",
+ "module": "Gretis Addon",
+ "name": "Attendance Tool Company Wise Child",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
