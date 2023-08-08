@@ -3,6 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe.utils import flt
 
 class AttendanceToolCompanyWise(Document):
 	def before_submit(self):
@@ -140,6 +141,15 @@ class AttendanceToolCompanyWise(Document):
 			from frappe.utils import getdate
 			year = getdate(self.date).year
 
+			ot = 0
+			ot_hrs = 0
+			for o in dates:
+				if o.get('status') == 'OT With Present':
+					ot += 1
+
+			if i.hrs:
+				ot_hrs = int(i.hrs) / ot
+			
 			import datetime, calendar
 			num_days = calendar.monthrange(year, month)[1]
 			for day in range(1, num_days+1):
@@ -147,23 +157,26 @@ class AttendanceToolCompanyWise(Document):
 				in_time = None
 				out_time = None
 				status = None
+				ot = 0
 				for d in dates:
 					if d.get('date') == checkin_date.day:
-						print('in if', d.get('date'), checkin_date)
+						
 						if d.get('status') in ('Present', 'OT With Present'):
 							in_time = str(checkin_date) + ' 10:00:00'
 						
 						if d.get('status') == 'Present':
 							out_time = str(checkin_date) + ' 06:00:00'
+
 						elif d.get('status') == 'OT With Present':
-							out_time = str(checkin_date) + ' 02:00:00'
+							time = datetime.datetime.strptime("02:00:00", "%H:%M:%S")+datetime.timedelta(hours=ot_hrs)
+							out_time = str(checkin_date) + ' {}'.format(time.time())
 
 						if d.get('status') == 'Absent':
 							status = d.get('status')
 
 				if status == 'Absent':
 					continue
-					
+				
 				create_checkins(i.employee, 'IN', in_time)
 				create_checkins(i.employee, 'OUT', out_time)
 
