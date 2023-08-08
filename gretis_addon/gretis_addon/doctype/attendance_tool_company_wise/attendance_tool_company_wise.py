@@ -171,6 +171,20 @@ class AttendanceToolCompanyWise(Document):
 							time = datetime.datetime.strptime("02:00:00", "%H:%M:%S")+datetime.timedelta(hours=ot_hrs)
 							out_time = str(checkin_date) + ' {}'.format(time.time())
 
+							# create timesheet for ot
+
+							emp_timesheet = frappe.new_doc('Timesheet')
+							emp_timesheet.company = self.company
+							emp_timesheet.employee = i.employee
+							emp_timesheet.append('time_logs', {
+								'activity_type': 'Regular OT',
+								'from_time': str(checkin_date) + ' 02:00:00',
+								'to_time': out_time,
+								'hours': ot_hrs
+							})
+							emp_timesheet.save(ignore_permissions=True)
+							emp_timesheet.submit()
+
 						if d.get('status') == 'Absent':
 							status = d.get('status')
 
