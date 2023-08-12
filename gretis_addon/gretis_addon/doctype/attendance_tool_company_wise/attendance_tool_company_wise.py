@@ -148,7 +148,10 @@ class AttendanceToolCompanyWise(Document):
 					ot += 1
 
 			if i.hrs:
-				ot_hrs = int(i.hrs) / ot
+				if ot != 0:
+					ot_hrs = int(i.hrs) / ot
+				else:
+					ot_hrs = 0
 			
 			import datetime, calendar
 			num_days = calendar.monthrange(year, month)[1]
@@ -183,10 +186,18 @@ class AttendanceToolCompanyWise(Document):
 								'hours': ot_hrs
 							})
 							emp_timesheet.save(ignore_permissions=True)
-							emp_timesheet.submit()
 
 						if d.get('status') == 'Absent':
 							status = d.get('status')
+
+							# create attendance for Absent employee
+							
+							create_attendance = frappe.new_doc('Attendance')
+							create_attendance.employee = i.employee
+							create_attendance.status = 'Absent'
+							create_attendance.attendance_date = checkin_date
+							create_attendance.save(ignore_permissions=True)
+							create_attendance.submit()
 
 				if status == 'Absent':
 					continue
