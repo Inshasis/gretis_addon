@@ -138,6 +138,8 @@ class AttendanceToolCompanyWise(Document):
 			]
 			month = frappe.db.sql("select month(str_to_date('{}','%b'))".format(self.month))[0][0]
 			
+			doj = frappe.db.get_value("Employee", i.employee, 'date_of_joining')
+			
 			from frappe.utils import getdate
 			year = getdate(self.date).year
 
@@ -157,54 +159,56 @@ class AttendanceToolCompanyWise(Document):
 			num_days = calendar.monthrange(year, month)[1]
 			for day in range(1, num_days+1):
 				checkin_date = datetime.date(year, month, day)
-				in_time = None
-				out_time = None
-				status = None
-				ot = 0
-				for d in dates:
-					if d.get('date') == checkin_date.day:
+				if doj < checkin_date:
+					in_time = None
+					out_time = None
+					status = None
+					ot = 0
+					for d in dates:
 						
-						if d.get('status') in ('Present', 'OT With Present'):
-							in_time = str(checkin_date) + ' 10:00:00'
-						
-						if d.get('status') == 'Present':
-							out_time = str(checkin_date) + ' 06:00:00'
-
-						elif d.get('status') == 'OT With Present':
-							time = datetime.datetime.strptime("02:00:00", "%H:%M:%S")+datetime.timedelta(hours=ot_hrs)
-							out_time = str(checkin_date) + ' {}'.format(time.time())
-
-							# create timesheet for ot
-
-							emp_timesheet = frappe.new_doc('Timesheet')
-							emp_timesheet.company = self.company
-							emp_timesheet.employee = i.employee
-							emp_timesheet.append('time_logs', {
-								'activity_type': 'Regular OT',
-								'from_time': str(checkin_date) + ' 02:00:00',
-								'to_time': out_time,
-								'hours': ot_hrs
-							})
-							emp_timesheet.save(ignore_permissions=True)
-
-						if d.get('status') == 'Absent':
-							status = d.get('status')
-
-							# create attendance for Absent employee
+						if d.get('date') == checkin_date.day:
 							
-							create_attendance = frappe.new_doc('Attendance')
-							create_attendance.employee = i.employee
-							create_attendance.status = 'Absent'
-							create_attendance.attendance_date = checkin_date
-							create_attendance.save(ignore_permissions=True)
-							create_attendance.submit()
+							if d.get('status') in ('Present', 'OT With Present'):
+								in_time = str(checkin_date) + ' 10:00:00'
+							
+							if d.get('status') == 'Present':
+								out_time = str(checkin_date) + ' 06:00:00'
 
-				if status == 'Absent':
-					continue
+							elif d.get('status') == 'OT With Present':
+								time = datetime.datetime.strptime("02:00:00", "%H:%M:%S")+datetime.timedelta(hours=ot_hrs)
+								out_time = str(checkin_date) + ' {}'.format(time.time())
+
+								# create timesheet for ot
+
+								emp_timesheet = frappe.new_doc('Timesheet')
+								emp_timesheet.company = self.company
+								emp_timesheet.employee = i.employee
+								emp_timesheet.append('time_logs', {
+									'activity_type': 'Regular OT',
+									'from_time': str(checkin_date) + ' 02:00:00',
+									'to_time': out_time,
+									'hours': ot_hrs
+								})
+								emp_timesheet.save(ignore_permissions=True)
+
+							if d.get('status') == 'Absent':
+								status = d.get('status')
+
+								# create attendance for Absent employee
+								
+								create_attendance = frappe.new_doc('Attendance')
+								create_attendance.employee = i.employee
+								create_attendance.status = 'Absent'
+								create_attendance.attendance_date = checkin_date
+								create_attendance.save(ignore_permissions=True)
+								create_attendance.submit()
+
+					if status == 'Absent':
+						continue
 				
-				create_checkins(i.employee, 'IN', in_time)
-				create_checkins(i.employee, 'OUT', out_time)
-
+					create_checkins(i.employee, 'IN', in_time)
+					create_checkins(i.employee, 'OUT', out_time)
+			
 def create_checkins(employee, log_type, time):
 	emp_checkin = frappe.new_doc("Employee Checkin")
 	emp_checkin.employee = employee
