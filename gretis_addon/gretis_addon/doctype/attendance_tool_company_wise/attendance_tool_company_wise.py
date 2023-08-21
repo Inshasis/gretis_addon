@@ -205,19 +205,14 @@ class AttendanceToolCompanyWise(Document):
 
 					if status == 'Absent':
 						continue
-					emp_checkin = frappe.new_doc("Employee Checkin")
-					emp_checkin.employee = employee
-					emp_checkin.log_type = log_type
-					emp_checkin.time = time
-					emp_checkin.save(ignore_permissions=True)
-					
-					# create_checkins(i.employee, 'IN', in_time)
-					# create_checkins(i.employee, 'OUT', out_time)
+									
+					create_checkins(i.employee, 'IN', in_time)
+					create_checkins(i.employee, 'OUT', out_time)
 			
-# def create_checkins(employee, log_type, time):
-	# emp_checkin = frappe.new_doc("Employee Checkin")
-	# emp_checkin.employee = employee
-	# emp_checkin.log_type = log_type
-	# emp_checkin.time = time
-	# emp_checkin.save(ignore_permissions=True)
+def create_checkins(employee, log_type, time):
+	emp_checkin = frappe.new_doc("Employee Checkin")
+	emp_checkin.employee = employee
+	emp_checkin.log_type = log_type
+	emp_checkin.time = time
+	emp_checkin.save(ignore_permissions=True)
 	
