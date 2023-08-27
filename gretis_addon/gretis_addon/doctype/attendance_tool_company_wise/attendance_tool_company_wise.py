@@ -190,6 +190,7 @@ class AttendanceToolCompanyWise(Document):
 									'hours': ot_hrs
 								})
 								emp_timesheet.save(ignore_permissions=True)
+								emp_timesheet.submit()
 
 							if d.get('status') == 'Absent':
 								status = d.get('status')
